@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.10)
+project(secmem)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(SODIUM REQUIRED libsodium)
+add_executable(secmem-agent secmem-agent.c)
+add_executable(secmemctl secmemctl.c)
+target_link_libraries(secmem-agent ${SODIUM_LIBRARIES})
+target_link_libraries(secmemctl ${SODIUM_LIBRARIES})
